@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WorkoutApp</string>
+    <string name="manage_exercises">Manage Exercises</string>
+    <string name="start_new_workout">Start New Workout</string>
+    <string name="load_workout">Load Workout</string>
+    <string name="add_exercise">Add Exercise</string>
+    <string name="exercise_name_prompt">Exercise Name</string>
+    <string name="error_exercise_name">Error! Please enter an exercise name.</string>
+    <string name="add_exercise_confirmation">New exercise has been created.</string>
+    <string name="add_exercise_bad_chars">Please only use letters and spaces.</string>
+    <string name="general_error">Sorry, something went wrong.</string>
+</resources>
