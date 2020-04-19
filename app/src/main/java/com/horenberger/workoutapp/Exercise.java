@@ -3,9 +3,11 @@ package com.horenberger.workoutapp;
 import android.content.Context;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Exercise implements java.io.Serializable{
@@ -15,13 +17,19 @@ public class Exercise implements java.io.Serializable{
     //maximum weight ever
     int max_weight;
 
-    //reps and sets
+    //preferred reps and sets
     int sets = 0;
     int reps = 0;
+
+    //current reps and sets
+    int curSets = 0;
+    int curReps = 0;
 
     //is exercise completed
     boolean done = false;
 
+    //constructor
+    public Exercise() {}
     //constructor
     public Exercise(String name) {
         this.name = name;
@@ -51,6 +59,17 @@ public class Exercise implements java.io.Serializable{
     public void setSets(int sets) {
         this.sets = sets;
     }
+
+    public int getCurSets() {return curSets;}
+
+    public void setCurSets(int curSets) {this.curSets = curSets;}
+
+    public int getCurReps() {return curReps;}
+
+    public void setCurReps(int curReps) {this.curReps = curReps;}
+
+    //reset cur reps and sets
+    public void resetCur() {this.curReps = 0; this.curSets = 0;}
 
     //incrementers for reps and sets
     public void incReps(){
@@ -91,4 +110,27 @@ public class Exercise implements java.io.Serializable{
         }
         return 1;
     }
-}
+
+    public int load(Context context, String file){
+        try {
+            FileInputStream instream = new FileInputStream (new File(context.getFilesDir()+"/Exercises/"+file));
+            ObjectInputStream objstream = new ObjectInputStream(instream);
+            Exercise newObject = (Exercise) objstream.readObject();
+            name = newObject.getName();
+            reps = newObject.getReps();
+            sets = newObject.getSets();
+            objstream.close();
+            instream.close();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+            return -2;
+        } catch (IOException e){
+            e.printStackTrace();
+            return -2;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return -2;
+        }
+        return 1;
+        }
+        }

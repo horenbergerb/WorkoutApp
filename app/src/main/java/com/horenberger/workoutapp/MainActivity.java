@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Intent exerciseManagerActivity = new Intent(MainActivity.this, ManageExercises.class);
             startActivity(exerciseManagerActivity);
         }
+        if(v.getId() == R.id.startnewworkout) {
+            Intent newWorkoutActivity = new Intent(MainActivity.this, NewWorkout.class);
+            startActivity(newWorkoutActivity);
+        }
     }
 
 }

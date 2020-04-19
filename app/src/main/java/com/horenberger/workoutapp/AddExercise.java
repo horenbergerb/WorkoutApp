@@ -49,7 +49,7 @@ public class AddExercise extends Activity {
                     if (result == -2)
                         Toast.makeText(AddExercise.this, getResources().getString(R.string.general_error), Toast.LENGTH_LONG).show();
 
-                        return;
+                        finish();
                 }
             }
         });
