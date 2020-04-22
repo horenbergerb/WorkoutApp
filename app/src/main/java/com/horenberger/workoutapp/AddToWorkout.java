@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,10 +25,26 @@ public class AddToWorkout extends AppCompatActivity {
     //used to pull the existing exercises from storage
     List<String> files;
 
+    private Button completeadd;
+    private NumberPicker setpicker;
+    private NumberPicker reppicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_workout);
+
+        completeadd = (Button) findViewById(R.id.completeadd);
+        setpicker = (NumberPicker) findViewById(R.id.setspicker);
+        reppicker = (NumberPicker) findViewById(R.id.repspicker);
+
+        setpicker.setMinValue(1);
+        setpicker.setMaxValue(20);
+
+        reppicker.setMinValue(1);
+        reppicker.setMaxValue(50);
+
+        final String[] cur_exercise = {null};
 
         listview =  (ListView) findViewById(R.id.exerciselist);
         initializeList();
@@ -34,11 +52,21 @@ public class AddToWorkout extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String new_exercise = adapter.getItem(position).replace(' ', '_');
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("new_exercise",new_exercise);
-                setResult(Activity.RESULT_OK, resultIntent);
-                finish();
+                cur_exercise[0] = adapter.getItem(position).replace(' ', '_');
+            }
+        });
+
+        completeadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if you click the button, go to the "AddExercise" menu
+                if (v.getId() == R.id.completeadd && cur_exercise[0] != null) {
+                    cur_exercise[0] += '/' + Integer.toString(setpicker.getValue()) + '/' + Integer.toString((reppicker.getValue()));
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("new_exercise",cur_exercise[0]);
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    finish();
+                }
             }
         });
 

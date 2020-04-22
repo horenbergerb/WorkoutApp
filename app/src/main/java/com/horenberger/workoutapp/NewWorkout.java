@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class NewWorkout extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class NewWorkout extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.exercisemanager);
+        setContentView(R.layout.activity_new_workout);
 
         addexercise = (Button) findViewById(R.id.addexercise);
         removeexercise = (Button) findViewById(R.id.removeexercise);
@@ -57,14 +58,18 @@ public class NewWorkout extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK) {
+            String[] results = data.getStringExtra("new_exercise").split("/");
             Log.d("TestLog","Test1");
-            String new_exercise_name = data.getStringExtra("new_exercise");
+            String new_exercise_name = results[0];
             Log.d("TestLog",new_exercise_name);
             Exercise new_exercise = new Exercise();
             new_exercise.load(NewWorkout.this, new_exercise_name);
             Log.d("TestLog",new_exercise.getName());
+
+            new_exercise.setSets(Integer.parseInt(results[1]));
+            new_exercise.setReps(Integer.parseInt(results[2]));
             exercises.add(new_exercise);
-            files.add(new_exercise.getName());
+            files.add(new_exercise.getName() + " Sets: " + results[1] + " Reps: " + results[2]);
             refreshList();
         }
     }

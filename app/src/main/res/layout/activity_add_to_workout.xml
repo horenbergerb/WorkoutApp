@@ -8,17 +8,62 @@
 
     <ListView
         android:id="@+id/exerciselist"
-        android:layout_width="417dp"
-        android:layout_height="725dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:choiceMode="singleChoice"
+        android:listSelector="@android:color/darker_gray"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/setstext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/repspicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/completeadd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/setspicker"
+        app:layout_constraintTop_toBottomOf="@+id/repstext"></NumberPicker>
+
+    <NumberPicker
+        android:id="@+id/setspicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/completeadd"
+        app:layout_constraintEnd_toStartOf="@+id/repspicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setstext"></NumberPicker>
+
+    <Button
+        android:id="@+id/completeadd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/add_exercise"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repspicker"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/setstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sets"
+        app:layout_constraintBottom_toTopOf="@+id/setspicker"
+        app:layout_constraintEnd_toStartOf="@+id/repstext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciselist" />
+
+    <TextView
+        android:id="@+id/repstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reps"
+        app:layout_constraintBottom_toTopOf="@+id/repspicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/setstext"
+        app:layout_constraintTop_toBottomOf="@+id/exerciselist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
