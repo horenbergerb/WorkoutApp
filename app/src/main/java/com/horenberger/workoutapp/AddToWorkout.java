@@ -38,17 +38,21 @@ public class AddToWorkout extends AppCompatActivity {
         setpicker = (NumberPicker) findViewById(R.id.setspicker);
         reppicker = (NumberPicker) findViewById(R.id.repspicker);
 
+
+        //min/max values for the sliders
         setpicker.setMinValue(1);
         setpicker.setMaxValue(20);
 
         reppicker.setMinValue(1);
         reppicker.setMaxValue(50);
 
+        //we pass back the exercise, set, and rep data in a string to be tokenized
         final String[] cur_exercise = {null};
 
         listview =  (ListView) findViewById(R.id.exerciselist);
         initializeList();
 
+        //selecting exercise by touching it
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,11 +60,13 @@ public class AddToWorkout extends AppCompatActivity {
             }
         });
 
+        //finishing the add
         completeadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if you click the button, go to the "AddExercise" menu
+                //if you click the button, go back to previous activity
                 if (v.getId() == R.id.completeadd && cur_exercise[0] != null) {
+                    //creating the string to be tokenized and turned into an object by the previous activity
                     cur_exercise[0] += '/' + Integer.toString(setpicker.getValue()) + '/' + Integer.toString((reppicker.getValue()));
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("new_exercise",cur_exercise[0]);
