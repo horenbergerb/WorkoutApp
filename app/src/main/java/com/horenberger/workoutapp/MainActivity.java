@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         boolean create_result= true;
         if (!folder.exists()) {
             create_result = folder.mkdirs();
+            create_basic_exercises();
         }
 
         //preparing the buttons
@@ -56,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Intent newWorkoutActivity = new Intent(MainActivity.this, NewWorkout.class);
             startActivity(newWorkoutActivity);
         }
+    }
+
+    private void create_basic_exercises(){
+        //Simple exercise objects get made and saved here.
+        Exercise test_exercise = new Exercise("Big Chungus");
     }
 
 }
