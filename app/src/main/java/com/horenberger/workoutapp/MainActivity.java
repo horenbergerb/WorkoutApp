@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private void create_basic_exercises(){
         //Simple exercise objects get made and saved here.
         Exercise test_exercise = new Exercise("Big Chungus");
+        test_exercise.save(getBaseContext());
     }
 
 }
