@@ -24,7 +24,7 @@ public class NewWorkout extends AppCompatActivity {
     //used for updating the displayed list
     ArrayAdapter<String>adapter;
     //container for the strings that listview displays
-    List<String> selectedexercises;
+    List<String> selectedexercises = new ArrayList<String>();
     //holds the actual exercises classes we'll put into the workout object
     List<Exercise> exercises;
 

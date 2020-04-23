@@ -23,7 +23,7 @@ public class AddToWorkout extends AppCompatActivity {
     //used for updating the displayed list
     ArrayAdapter<String> adapter;
     //used to pull the existing exercises from storage
-    List<String> files;
+    List<String> files = new ArrayList<String>();
 
     private Button completeadd;
     private NumberPicker setpicker;
