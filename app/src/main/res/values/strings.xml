@@ -13,4 +13,6 @@
     <string name="start_workout">Start Workout</string>
     <string name="sets">Sets</string>
     <string name="reps">Reps</string>
+    <string name="finish_workout">Finish Workout</string>
+    <string name="workout_complete">God Bless You</string>
 </resources>

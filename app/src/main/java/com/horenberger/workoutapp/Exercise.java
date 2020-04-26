@@ -71,6 +71,12 @@ public class Exercise implements java.io.Serializable{
     //reset cur reps and sets
     public void resetCur() {this.curReps = 0; this.curSets = 0;}
 
+    public boolean getDone(){return done;}
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
     //incrementers for reps and sets
     public void incReps(){
         this.reps += 1;

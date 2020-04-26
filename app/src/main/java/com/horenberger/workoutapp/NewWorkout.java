@@ -26,7 +26,7 @@ public class NewWorkout extends AppCompatActivity {
     //container for the strings that listview displays
     List<String> selectedexercises = new ArrayList<String>();
     //holds the actual exercises classes we'll put into the workout object
-    List<Exercise> exercises;
+    ArrayList<Exercise> exercises;
 
     private Button addexercise;
     private Button removeexercise;
@@ -66,7 +66,7 @@ public class NewWorkout extends AppCompatActivity {
                     Intent doWorkout = new Intent(NewWorkout.this, DoWorkout.class);
                     //Creating a workout object and passing to the new activity
                     Workout curWorkout = new Workout(exercises);
-                    doWorkout.putExtra("exercises", (Serializable) curWorkout);
+                    doWorkout.putExtra("workout", (Serializable) curWorkout);
                     //Starting the new activity
                     startActivity(doWorkout);
                     //finishing the current activity since we won't be coming back here
